@@ -1,9 +1,14 @@
+import os
 import threading
+import time
 import haffman
 import LZW
 import UDP_send_JPG
 import UDP_receive_JPG
 from PIL import ImageGrab
+
+def file_remove(filename):
+    os.remove(filename)
 
 if __name__ == '__main__':
     print("1. Haffman")
@@ -35,23 +40,29 @@ if __name__ == '__main__':
         if UDP_send_or_receive == "0":
             host = input("Input the target IP or \"0\" to use a default IP")
             if host == "0":
-                host = "127.0.0.1"
+                host = "192.168.10.27"
             port = int(input("Input the target port or \"0\" to use a default port"))
-            if port == "0":
+            if port == 0:
                 port = 1234
             address = (host, port)
-            pic = ImageGrab.grab()
-            pic.save('1.jpg')
-            filename = '1.jpg'
-            t = threading.Thread(target=UDP_send_JPG.send, args=(address, filename))
-            t.start()
+            while 1:
+                filename_time = time.strftime("%H-%M-%S", time.localtime())
+                filename = filename_time + 'S.jpg'
+                pic = ImageGrab.grab()
+                pic.save(filename)
+                # t = threading.Thread(target=UDP_send_JPG.send, args=(address, filename))
+                # t.start()
+                UDP_send_JPG.send(address,filename)
+                time.sleep(0.5)
+                t_remove = threading.Thread(target=file_remove, args=(filename,))
+                t_remove.start()
             # received(address, filename)
         elif UDP_send_or_receive == "1":
             address = input("Input the receive address or \"0\" to use a default address")
             if address == "0":
-                address = "127.0.0.1"
+                address = "192.168.10.27"
             port = int(input("Input the receive port or \"0\" to use a default port"))
-            if port == "0":
+            if port == 0:
                 port = 1234
             t = threading.Thread(target=UDP_receive_JPG.recvived, args=(address, port))
             t.start()
