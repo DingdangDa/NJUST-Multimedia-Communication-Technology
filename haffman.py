@@ -1,4 +1,8 @@
-# 哈夫曼编码字典(键为字母，值为编码)
+
+# 文件：南京理工大学多媒体通信技术课设，haffman编码模块
+# 作者：黄炫宇 xuanyuhuang2001@gmail.com
+# 说明：haffman编码
+
 codeDic = {}
 
 # 树节点类构建

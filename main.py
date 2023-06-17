@@ -1,3 +1,6 @@
+# 文件：南京理工大学多媒体通信技术课设，主程序
+# 作者：黄炫宇 xuanyuhuang2001@gmail.com
+# 说明：功能选择，调用对应的模块
 import os
 import threading
 import time
@@ -22,6 +25,7 @@ if __name__ == '__main__':
                 haffman_str = "NJUSTMultimedia"
             else:
                 haffman_str = haffman_str_default
+            print(haffman.freChar(haffman_str))
             t = haffman.nodeQeuen(haffman.freChar(haffman_str))
             tree = haffman.creatHuffmanTree(t)
             haffman.HuffmanCodeDic(tree, '')

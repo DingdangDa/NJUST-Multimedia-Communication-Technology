@@ -1,3 +1,8 @@
+
+# 文件：南京理工大学多媒体通信技术课设，UDP发送端模块
+# 作者：黄炫宇 xuanyuhuang2001@gmail.com
+# 说明：UDP发送端
+
 import threading
 import socket
 import tqdm

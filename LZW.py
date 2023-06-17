@@ -1,4 +1,8 @@
-# LZW编码
+
+# 文件：南京理工大学多媒体通信技术课设，LZW编码模块
+# 作者：黄炫宇 xuanyuhuang2001@gmail.com
+# 说明：LZW编码
+
 def LZW(string):
     print("压缩前的编码：", string)
 
