@@ -25,14 +25,9 @@ if __name__ == '__main__':
                 haffman_str = "NJUSTMultimedia"
             else:
                 haffman_str = haffman_str_default
-            print(haffman.freChar(haffman_str))
-            t = haffman.nodeQeuen(haffman.freChar(haffman_str))
-            tree = haffman.creatHuffmanTree(t)
-            haffman.HuffmanCodeDic(tree, '')
-            print("哈夫曼编码如下：\n", haffman.codeDic)
-            print("原字符串为：\n", haffman_str)
-            a = haffman.TransEncode(haffman_str)
-            print("经哈夫曼编码转换后如下：", a)
+            print("计数:", haffman.freChar(haffman_str))  # 计数后的结果
+            tree = haffman.HuffmanTree(haffman.freChar(haffman_str))
+            tree.get_code()
         elif function_choose == "2":
             LZW_str_default = input("Input a str or \"0\" to use a default str \"NJUSTMultimedia\"")
             if LZW_str_default == "0":
